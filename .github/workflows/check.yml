@@ -57,7 +57,7 @@ jobs:
         docker run --rm \
           -v ${{ github.workspace }}/output:/tmp \
           -e LIBNVIDIA_VERSION=${LIBNVIDIA_VERSION} \
-          ghcr.io/ich777/libnvidia-container:buster
+          ghcr.io/ich777/mos-libnvidia-container:buster
 
     - name: Create Release
       if: env.CREATE_RELEASE == 'true' && success()
