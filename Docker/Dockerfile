@@ -1,5 +1,9 @@
 FROM debian:buster-slim
 
+RUN echo "deb http://archive.debian.org/debian/ buster main contrib non-free" > /etc/apt/sources.list && \
+    echo "deb http://archive.debian.org/debian-security/ buster/updates main contrib non-free" >> /etc/apt/sources.list && \
+    echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until
+
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends apt-utils bmake build-essential bzip2 ca-certificates \
   curl devscripts dh-make fakeroot git libcap-dev libelf-dev libseccomp-dev lintian lsb-release m4 pkg-config xz-utils && \
