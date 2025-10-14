@@ -33,7 +33,11 @@ CMD bash -c "cd $BUILD_DIR && \
   cp /opt/daemon.json $PACKAGE_DIR/etc/docker/daemon.json && \
   cat $BUILD_DIR/libnvidia-container/LICENSE* >> $PACKAGE_DIR/usr/share/doc/libnvidia-container/LICENSE && \
   cd $BUILD_DIR && \
-  echo \"Package: libnvidia-container\nVersion: $LIBNVIDIA_VERSION\nArchitecture: amd64\nMaintainer: ich777\nDescription: libnvidia-container for MOS\" > $PACKAGE_DIR/DEBIAN/control && \
+  echo \"Package: libnvidia-container\" > $PACKAGE_DIR/DEBIAN/control && \
+  echo \"Version: $LIBNVIDIA_VERSION\" >> $PACKAGE_DIR/DEBIAN/control && \
+  echo \"Architecture: amd64\" >> $PACKAGE_DIR/DEBIAN/control && \
+  echo \"Maintainer: ich777\" >> $PACKAGE_DIR/DEBIAN/control && \
+  echo \"Description: libnvidia-container for MOS\" && \
   cd $BUILD_DIR && \
   dpkg-deb --build package $BUILD_DIR/libnvidia-container_${LIBNVIDIA_VERSION}-1+mos_amd64.deb && \
   md5sum $BUILD_DIR/libnvidia-container_${LIBNVIDIA_VERSION}-1+mos_amd64.deb | awk '{print $1}' > $BUILD_DIR/libnvidia-container_${LIBNVIDIA_VERSION}-1+mos_amd64.deb.md5"
