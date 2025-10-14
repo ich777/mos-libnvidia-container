@@ -1,7 +1,7 @@
 name: libnvidia-container
 
 on:
-  # Set schedule to run every 6 hours
+  # Set schedule to run every 24 hours
   #schedule:
   #  - cron: '* */24 * * *'
 
@@ -69,7 +69,7 @@ jobs:
         tag_name: ${{ env.LIBNVIDIA_VERSION }}
         release_name: "libnvidia-container v${{ env.LIBNVIDIA_VERSION }}"
         body: |
-          libnvidia-container ${{ env.LIBNVIDIA_VERSION }} for MOS
+          libnvidia-container v${{ env.LIBNVIDIA_VERSION }} for MOS
         draft: false
         prerelease: false
 
