@@ -67,9 +67,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ env.LIBNVIDIA_VERSION }}
-        release_name: "libnvidia-container v${{ env.LIBNVIDIA_VERSION }}"
+        release_name: "libnvidia-container ${{ env.LIBNVIDIA_VERSION }}"
         body: |
-          libnvidia-container v${{ env.LIBNVIDIA_VERSION }} for MOS
+          libnvidia-container ${{ env.LIBNVIDIA_VERSION }} for MOS
         draft: false
         prerelease: false
 
