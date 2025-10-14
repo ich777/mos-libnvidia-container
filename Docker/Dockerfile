@@ -39,4 +39,4 @@ CMD bash -c "cd $BUILD_DIR && \
   echo \"Description: libnvidia-container for MOS\" >> $PACKAGE_DIR/DEBIAN/control && \
   rm -rf $PACKAGE_DIR/usr/include $PACKAGE_DIR/usr/lib/*.a $PACKAGE_DIR/usr/lib/pkgconfig $PACKAGE_DIR/usr/lib/debug && \
   dpkg-deb --build package $BUILD_DIR/libnvidia-container_${LIBNVIDIA_VERSION}-1+mos_amd64.deb && \
-  md5sum $BUILD_DIR/libnvidia-container_${LIBNVIDIA_VERSION}-1+mos_amd64.deb | awk \"{print $1}\" > $BUILD_DIR/libnvidia-container_${LIBNVIDIA_VERSION}-1+mos_amd64.deb.md5"
+  md5sum $BUILD_DIR/libnvidia-container_${LIBNVIDIA_VERSION}-1+mos_amd64.deb | cut -d ' ' -f1 > $BUILD_DIR/libnvidia-container_${LIBNVIDIA_VERSION}-1+mos_amd64.deb.md5"
