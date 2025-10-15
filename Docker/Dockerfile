@@ -30,7 +30,7 @@ CMD bash -c "cd $BUILD_DIR && \
   sed -i '/if (umount2(\".\", MNT_DETACH) < 0)/,+1 d' $BUILD_DIR/libnvidia-container/src/nvc_ldcache.c && \
   DESTDIR=$PACKAGE_DIR make LIB_VERSION=${LIBNVIDIA_VERSION} LIB_TAG=${LIBNVIDIA_VERSION} install prefix=/usr GO111MODULE=auto && \
   mkdir -p $PACKAGE_DIR/etc/docker $PACKAGE_DIR/usr/lib/x86_64-linux-gnu $PACKAGE_DIR/DEBIAN && \
-  mv $PACKAGE_DIR/usr/lib/* $PACKAGE_DIR/usr/lib/x86_64-linux-gnu/ 2>/dev/null || true && \
+  mv $PACKAGE_DIR/usr/lib/* $PACKAGE_DIR/usr/lib/ 2>/dev/null || true && \
   cp /opt/daemon.json $PACKAGE_DIR/etc/docker/daemon.json && \
   cd $BUILD_DIR && \
   echo \"Package: libnvidia-container\" > $PACKAGE_DIR/DEBIAN/control && \
@@ -38,6 +38,6 @@ CMD bash -c "cd $BUILD_DIR && \
   echo \"Architecture: amd64\" >> $PACKAGE_DIR/DEBIAN/control && \
   echo \"Maintainer: ich777\" >> $PACKAGE_DIR/DEBIAN/control && \
   echo \"Description: libnvidia-container for MOS\" >> $PACKAGE_DIR/DEBIAN/control && \
-  rm -rf $PACKAGE_DIR/usr/include $PACKAGE_DIR/usr/lib/*.a $PACKAGE_DIR/usr/lib/pkgconfig $PACKAGE_DIR/usr/lib/debug && \
+  rm -rf $PACKAGE_DIR/usr/include $PACKAGE_DIR/usr/lib/x86_64-linux-gnu/*.a $PACKAGE_DIR/usr/lib/x86_64-linux-gnu/pkgconfig $PACKAGE_DIR/usr/lib/x86_64-linux-gnu/debug && \
   dpkg-deb --build package $BUILD_DIR/libnvidia-container_${LIBNVIDIA_VERSION}-1+mos_amd64.deb && \
   md5sum $BUILD_DIR/libnvidia-container_${LIBNVIDIA_VERSION}-1+mos_amd64.deb | cut -d ' ' -f1 > $BUILD_DIR/libnvidia-container_${LIBNVIDIA_VERSION}-1+mos_amd64.deb.md5"
