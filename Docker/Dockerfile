@@ -30,7 +30,7 @@ CMD bash -c "cd $BUILD_DIR && \
   sed -i '/if (umount2(\".\", MNT_DETACH) < 0)/,+1 d' $BUILD_DIR/libnvidia-container/src/nvc_ldcache.c && \
   DESTDIR=$PACKAGE_DIR make LIB_VERSION=${LIBNVIDIA_VERSION} LIB_TAG=${LIBNVIDIA_VERSION} install prefix=/usr GO111MODULE=auto && \
   mkdir -p $PACKAGE_DIR/etc/docker $PACKAGE_DIR/usr/lib/x86_64-linux-gnu $PACKAGE_DIR/DEBIAN && \
-  mv $PACKAGE_DIR/usr/lib/* $PACKAGE_DIR/usr/lib/ 2>/dev/null || true && \
+  mv $PACKAGE_DIR/usr/lib/* $PACKAGE_DIR/usr/lib/x86_64-linux-gnu/ 2>/dev/null || true && \
   cp /opt/daemon.json $PACKAGE_DIR/etc/docker/daemon.json && \
   cd $BUILD_DIR && \
   echo \"Package: libnvidia-container\" > $PACKAGE_DIR/DEBIAN/control && \
