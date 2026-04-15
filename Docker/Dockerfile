@@ -10,7 +10,7 @@ RUN apt-get update && \
   rm -rf /var/lib/apt/lists/*
 
 ENV OS_ARCH="amd64"
-ENV GOLANG_VERSION="1.22.12"
+ENV GOLANG_VERSION="1.25.6"
 ENV BUILD_DIR=/tmp
 ENV GOPATH=$BUILD_DIR/go
 ENV PATH=/opt/go/bin:$PATH
@@ -19,7 +19,7 @@ ENV PACKAGE_DIR=$BUILD_DIR/package
 
 COPY daemon.json /opt/daemon.json
 
-RUN curl https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-${OS_ARCH}.tar.gz | tar -C /opt -xz
+RUN curl https://go.dev/dl/go${GOLANG_VERSION}.linux-${OS_ARCH}.tar.gz | tar -C /opt -xz
 RUN chmod -R 777 /opt
 
 CMD bash -c "cd $BUILD_DIR && \
