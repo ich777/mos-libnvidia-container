@@ -19,7 +19,7 @@ ENV PACKAGE_DIR=$BUILD_DIR/package
 
 COPY daemon.json /opt/daemon.json
 
-RUN curl https://go.dev/dl/go${GOLANG_VERSION}.linux-${OS_ARCH}.tar.gz | tar -C /opt -xz
+RUN wget -qO- https://go.dev/dl/go${GOLANG_VERSION}.linux-${OS_ARCH}.tar.gz | tar -C /opt -xz
 RUN chmod -R 777 /opt
 
 CMD bash -c "cd $BUILD_DIR && \
