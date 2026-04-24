@@ -1,4 +1,4 @@
-name: libnvidia-container
+name: libnvidia-container arm
 
 on:
   # Set schedule to run every 24 hours
